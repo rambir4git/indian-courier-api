@@ -4,6 +4,7 @@ const axios = require('axios')
 const tabletojson = require('tabletojson');
 
 router.get('/:awb', (req, res) => {
+    console.log("in the xpressbees file");
     let trackingId = req.params.awb
     return axios.get(`https://www.xpressbees.com/track?isawb=Yes&trackid=${trackingId}`)
     .then(response => {
