@@ -6,6 +6,7 @@ let url = 'https://www.xpressbees.com/track?isawb=Yes&trackid=';
 
 router.get('/:awb', (req, res) => {
     let trackingId = req.params.awb
+    console.log(url+trackingId)
     tabletojson.convertUrl(url + trackingId)
     .then(tablesAsJson => {
         console.log(tablesAsJson.length)
