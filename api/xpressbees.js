@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const tabletojson = require('tabletojson');
 
-let url = 'http://www.xpressbees.com/track-shipment.aspx?tracking_id=';
+let url = 'http://www.xpressbees.com/track?isawb=Yes&trackid=';
 
 router.get('/:awb', (req, res) => {
     let trackingId = req.params.awb
