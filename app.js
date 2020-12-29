@@ -7,15 +7,15 @@ app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
-let ecom = require('./api/ecomexpress.js');
-let ekart = require('./api/ekart.js');
-let delhivery = require('./api/delhivery.js');
-let xpressbees = require('./api/xpressbees.js');
-let bluedart = require('./api/bluedart.js');
-let gati = require('./api/gati.js');
-let dtdc = require('./api/dtdc.js');
-let shadowfax = require('./api/shadowfax.js');
-let dhl = require('./api/dhl.js');
+const ecom = require('./api/ecomexpress.js');
+const ekart = require('./api/ekart.js');
+const delhivery = require('./api/delhivery.js');
+const xpressbees = require('./api/xpressbees.js');
+const bluedart = require('./api/bluedart.js');
+const gati = require('./api/gati.js');
+const dtdc = require('./api/dtdc.js');
+const shadowfax = require('./api/shadowfax.js');
+const dhl = require('./api/dhl.js');
 
 
 app.use((req, res, next) => {
