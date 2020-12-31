@@ -19,6 +19,11 @@ router.get('/:awb', (req, res) => {
                 return res.json({ result: modified })
             }
     })
+    .catch(err => {
+        return res.json({
+            error: err
+        })
+    })
 })
 
 module.exports = router;
