@@ -17,10 +17,9 @@ router.get('/:awb', (req, res) => {
     headers: {'Content-Type': 'multipart/form-data' }
     })
     .then(response => {
-        console.log(response)
-        return response
-        //tablesAsJson = tabletojson.convert(response.data);
-        
+        tablesAsJson = tabletojson.convert(response.data);
+        console.log(tableAsJson)
+        return res.json({status: "bohot sahi"})
 
     })
     .catch(err => {
