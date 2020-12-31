@@ -9,7 +9,7 @@ router.get('/:awb', (req, res) => {
     let trackingId = req.params.awb
     return axios.post(url,{awbcode:trackingId})
     .then(response => {
-        //tablesAsJson = tabletojson.convert(response.data);
+        tablesAsJson = tabletojson.convert(response);
         console.log(response)
         return res.json({status: "bohot sahi"})
 
