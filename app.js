@@ -16,6 +16,7 @@ const gati = require('./api/gati.js');
 const dtdc = require('./api/dtdc.js');
 const shadowfax = require('./api/shadowfax.js');
 const dhl = require('./api/dhl.js');
+const shiprocket = require('./api/shiprocket.js');
 
 
 app.use((req, res, next) => {
@@ -37,6 +38,7 @@ app.use('/gati', gati)
 app.use('/dtdc', dtdc)
 app.use('/shadowfax', shadowfax)
 app.use('/dhl', dhl)
+app.use('/shiprocket', shiprocket)
 
 app.use((req, res, next) => {
     const error = new Error('Not Found')
