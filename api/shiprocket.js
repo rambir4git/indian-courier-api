@@ -8,7 +8,7 @@ let url = 'https://packaging.shiprocket.in/index.php?route=account/track';
 router.get('/:awb', (req, res) => {
     let trackingId = req.params.awb
     return axios.post(url,{awbcode:trackingId})
-    .then(response -> {
+    .then(response => {
         tablesAsJson = tabletojson.convert(response.data);
         console.log(tableAsJson)
         if (!tablesAsJson || !tablesAsJson.length){
