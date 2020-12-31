@@ -17,8 +17,10 @@ router.get('/:awb', (req, res) => {
     headers: {'Content-Type': 'multipart/form-data' }
     })
     .then(response => {
-        tablesAsJson = tabletojson.convert(response.data);
-        console.log(tableAsJson)
+        console.log(response)
+        return response
+        //tablesAsJson = tabletojson.convert(response.data);
+        
 
     })
     .catch(err => {
