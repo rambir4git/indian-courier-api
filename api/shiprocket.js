@@ -1,24 +1,39 @@
-const express = require('express');
-const router = express.Router();
-const axios = require('axios');
-const tabletojson = require('tabletojson').Tabletojson;
+const axios = require('axios')
+const { JSDOM } = require('jsdom')
 
-let url = 'https://packaging.shiprocket.in/index.php?route=account/track';
-
-router.get('/:awb', (req, res) => {
-    let trackingId = req.params.awb
-    return axios.post(url,{awbcode:trackingId})
-    .then(response => {
-        let tablesAsJson = tabletojson.convert(response);
-        console.log(tablesAsJson)
-        return res.json({status: "bohot sahi"})
-
-    })
-    .catch(err => {
-        return res.json({
-            error: err
+module.exports = function (trackid){
+    const shiprocket = `https://www.shiprocket.co/tracking/${ trackid }`;
+    return axios.get(shiprocket)
+        .then((res)=>{
+            const { document } = new JSDOM(res.data).window
+            const ul = document.querySelector("div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div.delievery_info > div > ul")
+      
+            var jsondata = {}
+            jsondata["data"] = []
+      
+            ul.childNodes.forEach(li => {
+      
+              var listdata = []
+      
+              li.childNodes.forEach(inlist => {
+                inlist.childNodes.forEach(element => {
+                  element = element.textContent.replace(/\t|\n/g,'')
+                  if((element.replace(/ /g,''))&&(!element.includes('Activity : '))&&(!element.includes('Location : ')))
+                    listdata.push(element.replace(/_/g,' '))
+                });
+              });
+              
+              if(listdata.length>3)
+                jsondata["data"].push({
+                  activity:listdata[0],
+                  location:listdata[1],
+                  time:`${listdata[2]}, ${listdata[3]}`
+                })
+      
+            });
+            return jsondata
         })
-    })
-})
-
-module.exports = router;
+        .catch((err)=>{
+            return null
+        })
+}
