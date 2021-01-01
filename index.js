@@ -1,7 +1,7 @@
 const express = require('express')
 const promise = require('bluebird')
-const shiprocket = require('./API/shiprocket')
-const pickrr = require('./API/pickrr')
+const shiprocket = require('./api/shiprocket')
+const pickrr = require('./api/pickrr')
 const PORT = process.env.PORT || 5000 
 
 express()
