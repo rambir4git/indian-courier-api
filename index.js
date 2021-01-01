@@ -9,7 +9,7 @@ express()
     response.status(200).json({
       build:1,
       value:500,
-      cost:50
+      shipping:50
     })
   })
   .get('/:trackid', (request, response)=>{
