@@ -14,7 +14,7 @@ express()
   })
   .get('/:trackid', (request, response)=>{
     const trackid = request.params.trackid;
-    promise.join(shiprocket(trackid),pickrr(trackid))
+    promise.all([shiprocket(trackid),pickrr(trackid)])
     .spread((ship,pick)=>{
         response.status(200).json(ship==null?pick:ship)
     })

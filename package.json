@@ -1,6 +1,6 @@
 {
   "name": "tracking",
-  "description": "This is the default fulfillment for a Dialogflow agents using Mekvahan webhook",
+  "description": "Swasthum Wellness Tracking Api",
   "version": "0.0.1",
   "scripts": {
     "start": "node index.js",

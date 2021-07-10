@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 module.exports = function (trackid){
-    const pickrr = `https://www.pickrr.com/api/tracking-json/?tracking_id=${ trackid }`;
+    const pickrr = `https://www.pickrr.com/api/tracking-json/?auth_token=acdd0dfe8130469ce7b71a200f108ebb113674&tracking_id=${ trackid }`;
     return axios.get(pickrr)
         .then((res)=>{
             
